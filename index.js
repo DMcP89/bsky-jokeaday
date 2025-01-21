@@ -48,18 +48,20 @@ const agent = new api_1.BskyAgent({
 });
 async function postJoke() {
     try {
+        // Fetch a joke from icanhazdadjoke
         const response = await axios_1.default.get('https://icanhazdadjoke.com/', {
             headers: {
                 Accept: 'application/json',
             },
         });
         const jokeData = response.data;
-        console.log(`Joke: ${jokeData.joke}`);
+        // Authenticate with Bluesky
         await agent.login({ identifier: process.env.BLUESKY_USERNAME, password: process.env.BLUESKY_PASSWORD });
+        // Post the joke to Bluesky
         await agent.post({
             text: jokeData.joke,
         });
-        console.log("Just posted!");
+        console.log("Just posted: ", jokeData.joke);
     }
     catch (error) {
         console.error('Error fetching the joke:', error);
@@ -67,6 +69,6 @@ async function postJoke() {
 }
 postJoke();
 // Run this on a cron job
-const scheduleExpression = '0 9 * * *'; // Run once every three hours in prod
-const job = new cron_1.CronJob(scheduleExpression, postJoke); // change to scheduleExpressionMinute for testing
-//job.start();
+const scheduleExpression = '0 9 * * *';
+const job = new cron_1.CronJob(scheduleExpression, postJoke);
+job.start();
