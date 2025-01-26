@@ -5,12 +5,17 @@ on:
   schedule:
     - cron: '0 9 * * *'
   workflow_dispatch:
-    branches:
-      - main
+
+# Two secrets should be set in the repository settings: BLUESKY_USERNAME and BLUESKY_PASSWORD
+
+
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
+      BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v2
