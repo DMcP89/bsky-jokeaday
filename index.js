@@ -38,7 +38,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const api_1 = require("@atproto/api");
 const dotenv = __importStar(require("dotenv"));
-const cron_1 = require("cron");
 const process = __importStar(require("process"));
 const axios_1 = __importDefault(require("axios"));
 dotenv.config();
@@ -68,7 +67,3 @@ async function postJoke() {
     }
 }
 postJoke();
-// Run this on a cron job
-const scheduleExpression = '0 9 * * *';
-const job = new cron_1.CronJob(scheduleExpression, postJoke);
-job.start();

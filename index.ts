@@ -1,6 +1,5 @@
 import { BskyAgent } from '@atproto/api';
 import * as dotenv from 'dotenv';
-import { CronJob } from 'cron';
 import * as process from 'process';
 import axios from 'axios';
 
@@ -40,18 +39,4 @@ async function postJoke(){
     console.error('Error fetching the joke:', error);
   }
 }
-
-
-
-
-
-
-
 postJoke();
-
-// Run this on a cron job
-const scheduleExpression = '0 9 * * *'; 
-
-const job = new CronJob(scheduleExpression, postJoke); 
-
-job.start();
