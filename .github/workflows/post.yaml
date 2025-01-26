@@ -7,23 +7,19 @@ on:
   workflow_dispatch:
 
 # Two secrets should be set in the repository settings: BLUESKY_USERNAME and BLUESKY_PASSWORD
-
-
-
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
       BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
       BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
-
     steps:
       - uses: actions/checkout@v2
 
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: '20.x'
 
       - name: Install dependencies
         run: npm install
