@@ -1,4 +1,4 @@
-# Dad Joe A Day Bot
+# Dad Joke A Day Bot
 
 This is a bot that posts a joke from [icanhazdadjoke](https://icanhazdadjoke.com/) every day at 9am to [@dadjokeaday.bsky.social](https://bsky.app/profile/dadjokeaday.bsky.social) on Bluesky. It is base on the [Bluesky bot template](https://github.com/bluesky-social/cookbook/tree/main/ts-bot).
 
